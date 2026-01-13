@@ -218,19 +218,19 @@ export const Dashboard: React.FC<DashboardProps> = ({ data }) => {
                               const achieved = dailyMatch ? dailyMatch.actual : 0;
                               const shortfall = dailyTarget - achieved;
 
-                              let rowBg = "hover:bg-white/5";
+                              let rowStyle = "hover:bg-white/5";
                               if (shortfall > 50) {
-                                rowBg = "bg-red-900/30 border-l-4 border-red-600";
+                                rowStyle = "bg-red-600 text-white font-bold";
                               } else if (shortfall > 10) {
-                                rowBg = "bg-yellow-900/20 border-l-4 border-yellow-500";
+                                rowStyle = "bg-yellow-500 text-slate-900 font-bold";
                               }
 
                               return (
-                                <tr key={i} className={`group transition-colors ${rowBg}`}>
-                                  <td className="py-6 pl-4 text-sm text-slate-300 font-bold group-hover:text-white transition-colors">{r.metric}</td>
-                                  <td className="py-6 text-right text-slate-500 font-mono text-xs">{dailyTarget.toLocaleString()}</td>
-                                  <td className="py-6 text-right font-mono font-black text-lg text-white/40">{achieved.toLocaleString()}</td>
-                                  <td className="py-6 text-right font-mono font-black text-xl text-red-500 drop-shadow-[0_0_8px_rgba(220,38,38,0.4)] pr-4">
+                                <tr key={i} className={`group transition-all ${rowStyle}`}>
+                                  <td className="py-6 pl-4 text-sm group-hover:opacity-80">{r.metric}</td>
+                                  <td className="py-6 text-right font-mono text-xs opacity-70">{dailyTarget.toLocaleString()}</td>
+                                  <td className="py-6 text-right font-mono font-black text-lg opacity-80">{achieved.toLocaleString()}</td>
+                                  <td className="py-6 text-right font-mono font-black text-xl pr-4">
                                     -{shortfall.toLocaleString()}
                                   </td>
                                 </tr>
